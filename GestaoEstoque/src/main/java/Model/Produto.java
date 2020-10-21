@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,12 +11,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import DAO.EntidadeBase;
+
 @Entity
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "Produtos")
-public class Produto {
+public class Produto implements EntidadeBase{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@Column(name = "Nome")
@@ -33,8 +36,8 @@ public class Produto {
 		Nome = nome;
 		Categoria = categoria;
 	}
-
-	public int getCodigo() {
+	@Override
+	public Serializable getId() {
 		return Codigo;
 	}
 

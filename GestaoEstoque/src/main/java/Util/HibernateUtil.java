@@ -35,7 +35,7 @@ public class HibernateUtil {
 				//settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 				settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
 				//settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate_exemplo?useTimezone=true&serverTimezone=UTC");
-				settings.put(Environment.URL, "jdbc:mysql://localhost/Gestao_Estoque?useSSL=false&user=root&password=Hadouken&serverTimezone=UTC");
+				settings.put(Environment.URL, "jdbc:mysql://localhost/Gestao_Estoque?createDatabaseIfNotExist=true&useSSL=false&user=root&password=Hadouken&serverTimezone=UTC");
 				//"jdbc:mysql://"+Server+"/"+dbName + "?useSSL=false&user="+userName+"&password="+pws);
 				//useSSL=false
 				//settings.put(Environment.USER, "root");
@@ -46,20 +46,20 @@ public class HibernateUtil {
 
 				settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-				settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+				settings.put(Environment.HBM2DDL_AUTO, "update");
 
 				configuration.setProperties(settings);
 
-				configuration.addAnnotatedClass(Deposito.class);
-				configuration.addAnnotatedClass(Filial.class);
-				configuration.addAnnotatedClass(Fornecedor.class);
-				configuration.addAnnotatedClass(Funcionario.class);
-				configuration.addAnnotatedClass(Nota_Fiscal.class);				
+				//configuration.addAnnotatedClass(Deposito.class);
+				//configuration.addAnnotatedClass(Filial.class);
+				//configuration.addAnnotatedClass(Fornecedor.class);
+				//configuration.addAnnotatedClass(Funcionario.class);
+				//configuration.addAnnotatedClass(Nota_Fiscal.class);				
 				configuration.addAnnotatedClass(Produto.class);
-				configuration.addAnnotatedClass(Perecivel.class);
-				configuration.addAnnotatedClass(Produto_Deposito.class);
-				configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
-				configuration.addAnnotatedClass(Risco.class);
+				//configuration.addAnnotatedClass(Perecivel.class);
+				//configuration.addAnnotatedClass(Produto_Deposito.class);
+				//configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
+				//configuration.addAnnotatedClass(Risco.class);
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
