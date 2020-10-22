@@ -1,5 +1,7 @@
 package DAO;
 
-public class DepositoDAO {
+import Model.Deposito;
+
+public class DepositoDAO extends GenericoDAO<Deposito>{
 
 }

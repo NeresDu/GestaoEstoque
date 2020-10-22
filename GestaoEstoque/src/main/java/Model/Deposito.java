@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,11 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import DAO.EntidadeBase;
+
 @Entity
 @Table(name = "Depositos")
-public class Deposito {	
+public class Deposito implements EntidadeBase{	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
 	private int Codigo;
 	
@@ -45,8 +47,8 @@ public class Deposito {
 	public void setCategoria_Estoque(String categoria_Estoque) {
 		Categoria_Estoque = categoria_Estoque;
 	}
-
-	public int getCodigo() {
+	@Override
+	public Serializable getId() {
 		return Codigo;
 	}
 

@@ -50,14 +50,14 @@ public class HibernateUtil {
 
 				configuration.setProperties(settings);
 
-				//configuration.addAnnotatedClass(Deposito.class);
+				configuration.addAnnotatedClass(Deposito.class);
 				//configuration.addAnnotatedClass(Filial.class);
 				//configuration.addAnnotatedClass(Fornecedor.class);
 				//configuration.addAnnotatedClass(Funcionario.class);
 				//configuration.addAnnotatedClass(Nota_Fiscal.class);				
 				configuration.addAnnotatedClass(Produto.class);
 				//configuration.addAnnotatedClass(Perecivel.class);
-				//configuration.addAnnotatedClass(Produto_Deposito.class);
+				configuration.addAnnotatedClass(Produto_Deposito.class);
 				//configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
 				//configuration.addAnnotatedClass(Risco.class);
 
