@@ -20,9 +20,9 @@ public class Produto_DepositoDAO extends GenericoDAO<Produto_Deposito>{
 			
 			// verificar se o produto e deposito ja existem para entao conseguir vincular esse produto a um deposito com seu estoque,
 			//parar atualizar iremos utilizar o metodo update
-			if(pdep = Session.fin(p, p.getId()))
+			//if(pdep = Session.fin(p, p.getId()))
 			
-			Session.save(t);
+			//Session.save(t);
 
 			trans.commit();
 
