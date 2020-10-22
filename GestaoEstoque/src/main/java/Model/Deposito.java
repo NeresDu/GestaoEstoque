@@ -22,22 +22,22 @@ public class Deposito implements EntidadeBase{
 	@Column(name = "Codigo")
 	private int Codigo;
 	
+	@Column(name = "Nome")
+	private String Nome;
+	
 	@Column(name = "Categoria_Estoque")
 	private String Categoria_Estoque;
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Produto_Deposito> Produtos;
 	
 	
 	public Deposito() {
 		
 	}
 
-	public Deposito(String categoria_Estoque, int codigo, List<Produto_Deposito> produtos) {
+	public Deposito(String nome, String categoria_Estoque, int codigo, List<Produto_Deposito> produtos) {
 		super();
 		Categoria_Estoque = categoria_Estoque;
 		Codigo = codigo;
-		Produtos = produtos;
+		Nome = nome;
 	}
 
 	public String getCategoria_Estoque() {
@@ -56,12 +56,12 @@ public class Deposito implements EntidadeBase{
 		Codigo = codigo;
 	}
 
-	public List<Produto_Deposito> getProdutos() {
-		return Produtos;
+	public String getNome() {
+		return Nome;
 	}
 
-	public void setProdutos(List<Produto_Deposito> produtos) {
-		Produtos = produtos;
+	public void setNome(String nome) {
+		Nome = nome;
 	}
 	
 	

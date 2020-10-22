@@ -5,7 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -14,6 +17,10 @@ import DAO.EntidadeBase;
 @Entity
 @Table(name = "Produtos_Deposito")
 public class Produto_Deposito implements EntidadeBase{
+	@Id
+	@Column(name = "Codigo")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Codigo;
 	@Column(name = "Custo")
 	private double Custo;
 	@Column(name = "Estoque")
@@ -22,10 +29,10 @@ public class Produto_Deposito implements EntidadeBase{
 	private int Estoque_Maximo;
 	@Column(name = "Estoque_Minimo")
 	private int Estoque_Minimo;
-	@Id
+	//@JoinColumn(name = "idProduto")
 	@OneToOne(fetch = FetchType.LAZY)
 	private Produto Produto;
-	@Id
+	//@JoinColumn(name = "idDeposito")
 	@OneToOne(fetch = FetchType.LAZY)
 	private Deposito Deposito;
 	
@@ -46,8 +53,10 @@ public class Produto_Deposito implements EntidadeBase{
 	}
 	@Override
 	public Serializable getId() {
-		Serializable cod = Produto.getId();
-		return cod;
+		return Codigo;
+	}
+	public int getIdInt() {
+		return Codigo;
 	}
 
 	public double getCusto() {

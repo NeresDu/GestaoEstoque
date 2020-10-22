@@ -9,6 +9,8 @@ public class Risco extends Produto{
 	private String Grau_Risco;
 	@Column(name = "Orientacao_Seguranca")
 	private String Orientacao_Seguranca;
+	@Column(name = "Tipo_Risco")
+	private String Tipo_Risco;
 	
 	public Risco() {
 		
