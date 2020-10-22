@@ -55,9 +55,7 @@ public class Produto_Deposito implements EntidadeBase{
 	public Serializable getId() {
 		return Codigo;
 	}
-	public int getIdInt() {
-		return Codigo;
-	}
+
 
 	public double getCusto() {
 		return Custo;
