@@ -5,7 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import DAO.GenericoDAO;
+import DAO.PerecivelDAO;
 import DAO.ProdutoDAO;
+import DAO.RiscoDAO;
 import Model.Perecivel;
 import Model.Produto;
 import Model.Risco;
@@ -13,32 +15,32 @@ import Model.Risco;
 public class Teste_Produto {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		/*
-		 * Produto p = new Produto(); p.setNome("teste"); p.setCodigo(11);
-		 * p.setCategoria("teste o teste");
-		 */
+		
+		 Produto p = new Produto(); 
+		 p.setNome("teste"); 
+		 
 		
 		ProdutoDAO pDAO = new ProdutoDAO();
 		
 		//pDAO.Delete(Produto.class, 1234);
 		
-		//pDAO.Save(p);
+		pDAO.Save(p);
 		
+		RiscoDAO RDAO = new RiscoDAO();
 		Risco PR = new Risco();
 		
 		PR.setNome("CIANETO");
 		PR.setOrientacao_Seguranca("BLA BLA BLA");
 		
-		pDAO.Save(PR);
+		RDAO.Save(PR);
 		
 		
-		
+		PerecivelDAO PPDAO = new  PerecivelDAO();
 		Perecivel PP = new Perecivel();
 		PP.setNome("COXINHA");
 		Calendar C = Calendar.getInstance();
 		PP.setData_Validade(C.getTime());
-		pDAO.Save(PP);
+		PPDAO.Save(PP);
 		
 		
 		//pDAO.Update(p);
