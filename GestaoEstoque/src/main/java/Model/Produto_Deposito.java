@@ -19,7 +19,6 @@ import DAO.EntidadeBase;
 public class Produto_Deposito implements EntidadeBase{
 	@Id
 	@Column(name = "Codigo")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Codigo;
 	@Column(name = "Custo")
 	private double Custo;
@@ -36,7 +35,7 @@ public class Produto_Deposito implements EntidadeBase{
 	@OneToOne(fetch = FetchType.LAZY)
 	private Deposito Deposito;
 	
-	public Produto_Deposito(double custo, int estoque, int estoque_Maximo, int estoque_Minimo,
+	public Produto_Deposito(int codigo, double custo, int estoque, int estoque_Maximo, int estoque_Minimo,
 			Model.Produto produto, Model.Deposito deposito) {
 		super();
 		Custo = custo;
@@ -45,6 +44,7 @@ public class Produto_Deposito implements EntidadeBase{
 		Estoque_Minimo = estoque_Minimo;
 		Produto = produto;
 		Deposito = deposito;
+		Codigo = codigo;
 	}
 	
 	public Produto_Deposito() {
@@ -54,6 +54,12 @@ public class Produto_Deposito implements EntidadeBase{
 	@Override
 	public Serializable getId() {
 		return Codigo;
+	}
+	public int getIdInt() {
+		return Codigo;
+	}
+	public void setCodigo(int codigo) {
+		Codigo = codigo;
 	}
 
 

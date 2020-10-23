@@ -51,6 +51,9 @@ public class Deposito implements EntidadeBase{
 	public Serializable getId() {
 		return Codigo;
 	}
+	public int getIdInt() {
+		return Codigo;
+	}
 
 	public void setCodigo(int codigo) {
 		Codigo = codigo;
