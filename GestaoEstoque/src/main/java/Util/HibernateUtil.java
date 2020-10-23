@@ -60,7 +60,7 @@ public class HibernateUtil {
 				configuration.addAnnotatedClass(Produto.class);
 				//configuration.addAnnotatedClass(Produto_Entrada_Saida.class);
 				//configuration.addAnnotatedClass(Produto_Deposito.class);
-				configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
+				//configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
 				configuration.addAnnotatedClass(Entrada_Saida.class);
 				//configuration.addAnnotatedClass(Risco.class);
 				//configuration.addAnnotatedClass(Perecivel.class);

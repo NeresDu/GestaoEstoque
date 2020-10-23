@@ -3,10 +3,12 @@ package Model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
+@DiscriminatorValue(value = "P")
 public class Perecivel extends Produto {
 	@Column(name = "Data_Validade")
 	private Date Data_Validade;
@@ -16,7 +18,7 @@ public class Perecivel extends Produto {
 	}
 	
 	public Perecivel(int codigo, String nome, String categoria, Date data_Validade) {
-		super(codigo, nome, categoria);
+		super(codigo, nome);
 		Data_Validade = data_Validade;
 	}
 

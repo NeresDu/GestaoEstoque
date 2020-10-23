@@ -1,9 +1,11 @@
 package Model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue(value = "R")
 public class Risco extends Produto{
 	@Column(name = "Grau_Risco")
 	private String Grau_Risco;
@@ -18,7 +20,7 @@ public class Risco extends Produto{
 	
 	
 	public Risco(int codigo, String nome, String categoria, String grau_Risco, String orientacao_Seguranca) {
-		super(codigo, nome, categoria);
+		super(codigo, nome);
 		Grau_Risco = grau_Risco;
 		Orientacao_Seguranca = orientacao_Seguranca;
 	}

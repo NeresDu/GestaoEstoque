@@ -3,6 +3,10 @@ package Model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +19,9 @@ import DAO.EntidadeBase;
 
 @Entity
 @Inheritance (strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Categoria", length = 1, discriminatorType = DiscriminatorType.STRING)
+//Comum
+@DiscriminatorValue(value = "C")
 @Table(name = "Produtos")
 public class Produto implements EntidadeBase{
 	@Id
@@ -22,19 +29,16 @@ public class Produto implements EntidadeBase{
 	private int Codigo;
 	@Column(name = "Nome")
 	private String Nome;
-	@Column(name = "Categoria")
-	private String Categoria;
 	
 	
 	public Produto() {
 		
 	}
 
-	public Produto(int codigo, String nome, String categoria) {
+	public Produto(int codigo, String nome) {
 		super();
 		Codigo = codigo;
 		Nome = nome;
-		Categoria = categoria;
 	}
 	@Override
 	public Serializable getId() {
@@ -56,13 +60,6 @@ public class Produto implements EntidadeBase{
 		Nome = nome;
 	}
 
-	public String getCategoria() {
-		return Categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		Categoria = categoria;
-	}
 	
 	
 	
