@@ -1,5 +1,7 @@
 package DAO;
 
-public class Nota_FiscalDAO {
+import Model.Nota_Fiscal;
+
+public class Nota_FiscalDAO extends GenericoDAO<Nota_Fiscal>{
 
 }

@@ -20,9 +20,10 @@ public class Teste_Produto {
 		
 		//pDAO.Delete(Produto.class, 1234);
 		
-		//pDAO.Save(p);
+		pDAO.Save(p);
 		
 		//pDAO.Update(p);
+		
 		
 		//GetById
 		//p = new Produto();

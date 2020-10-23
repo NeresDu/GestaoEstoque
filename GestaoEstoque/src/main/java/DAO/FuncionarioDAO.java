@@ -1,5 +1,7 @@
 package DAO;
 
-public class FuncionarioDAO {
+import Model.Funcionario;
 
+public class FuncionarioDAO extends GenericoDAO<Funcionario>{
+	
 }

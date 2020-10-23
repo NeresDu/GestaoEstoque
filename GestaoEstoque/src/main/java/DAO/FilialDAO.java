@@ -1,5 +1,7 @@
 package DAO;
 
-public class FilialDAO {
+import Model.Filial;
+
+public class FilialDAO extends GenericoDAO<Filial>{
 
 }

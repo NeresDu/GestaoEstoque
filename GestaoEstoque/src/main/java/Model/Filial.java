@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,9 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import DAO.EntidadeBase;
+
 @Entity
 @Table(name = "Filiais")
-public class Filial {
+public class Filial implements EntidadeBase{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
@@ -58,6 +61,13 @@ public class Filial {
 
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		Funcionarios = funcionarios;
+	}
+
+
+	@Override
+	public Serializable getId() {
+		// TODO Auto-generated method stub
+		return Codigo;
 	}
 	
 	

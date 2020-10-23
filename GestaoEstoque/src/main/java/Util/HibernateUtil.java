@@ -9,13 +9,15 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import Model.Deposito;
+import Model.Entrada_Saida;
 import Model.Filial;
-import Model.Fornecedor;
+import Model.Fornecedor_Cliente;
 import Model.Funcionario;
 import Model.Nota_Fiscal;
 import Model.Perecivel;
 import Model.Produto;
 import Model.Produto_Deposito;
+import Model.Produto_Entrada_Saida;
 import Model.Produto_Nota_Fiscal;
 import Model.Risco;
 
@@ -51,16 +53,18 @@ public class HibernateUtil {
 				configuration.setProperties(settings);
 
 				configuration.addAnnotatedClass(Deposito.class);
-				//configuration.addAnnotatedClass(Filial.class);
-				//configuration.addAnnotatedClass(Fornecedor.class);
-				//configuration.addAnnotatedClass(Funcionario.class);
-				//configuration.addAnnotatedClass(Nota_Fiscal.class);				
+				configuration.addAnnotatedClass(Filial.class);
+				configuration.addAnnotatedClass(Fornecedor_Cliente.class);
+				configuration.addAnnotatedClass(Funcionario.class);
+				configuration.addAnnotatedClass(Nota_Fiscal.class);				
 				configuration.addAnnotatedClass(Produto.class);
-				//configuration.addAnnotatedClass(Perecivel.class);
-				configuration.addAnnotatedClass(Produto_Deposito.class);
-				//configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
+				//configuration.addAnnotatedClass(Produto_Entrada_Saida.class);
+				//configuration.addAnnotatedClass(Produto_Deposito.class);
+				configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
+				configuration.addAnnotatedClass(Entrada_Saida.class);
 				//configuration.addAnnotatedClass(Risco.class);
-
+				//configuration.addAnnotatedClass(Perecivel.class);
+				
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 						.applySettings(configuration.getProperties()).build();
 
