@@ -8,11 +8,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Produto_Entrada_Saida")
-public class Produto_Entrada_Saida {
+@Table(name = "Produto_Movimentacao")
+public class Produto_Movimentacao {
 	@Id
 	@OneToOne(fetch = FetchType.LAZY)
-	private Entrada_Saida Entrada_Saida;
+	private Movimentacao Movimentacao;
 	@Id
 	@OneToOne(fetch = FetchType.LAZY)
 	private Produto Produto;
@@ -23,26 +23,26 @@ public class Produto_Entrada_Saida {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Deposito Deposito;
 	
-	public Produto_Entrada_Saida() {
+	public Produto_Movimentacao() {
 		
 	}
 	
-	public Produto_Entrada_Saida(Model.Entrada_Saida entrada_Saida, Model.Produto produto, double custo, int quantidade,
+	public Produto_Movimentacao(Model.Movimentacao Movimentacao, Model.Produto produto, double custo, int quantidade,
 			Model.Deposito deposito) {
 		super();
-		Entrada_Saida = entrada_Saida;
+		Movimentacao = Movimentacao;
 		Produto = produto;
 		Custo = custo;
 		Quantidade = quantidade;
 		Deposito = deposito;
 	}
 
-	public Entrada_Saida getEntrada_Saida() {
-		return Entrada_Saida;
+	public Movimentacao getMovimentacao() {
+		return Movimentacao;
 	}
 
-	public void setEntrada_Saida(Entrada_Saida entrada_Saida) {
-		Entrada_Saida = entrada_Saida;
+	public void setMovimentacao(Movimentacao Movimentacao) {
+		Movimentacao = Movimentacao;
 	}
 
 	public Produto getProduto() {

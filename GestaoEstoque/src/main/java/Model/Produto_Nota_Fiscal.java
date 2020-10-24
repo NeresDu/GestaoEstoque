@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -13,7 +15,7 @@ import DAO.EntidadeBase;
 
 @Entity
 @Table(name = "Produtos_Nota_Fiscal")
-public class Produto_Nota_Fiscal implements EntidadeBase {
+public class Produto_Nota_Fiscal implements Serializable {
 	//deposito no qual ocorrerá a movimentação
 	@OneToOne(fetch = FetchType.LAZY)
 	private Deposito Deposito;
@@ -65,7 +67,7 @@ public class Produto_Nota_Fiscal implements EntidadeBase {
 		return Produto;
 	}
 
-	public void setCodigo_Produto(Produto Produto) {
+	public void setProduto(Produto Produto) {
 		Produto = Produto;
 	}
 
@@ -89,10 +91,10 @@ public class Produto_Nota_Fiscal implements EntidadeBase {
 	}
 
 
-	@Override
-	public Serializable getId() {
-		return this.Produto.getId();
-	}
+
+
+
+	
 
 
 	

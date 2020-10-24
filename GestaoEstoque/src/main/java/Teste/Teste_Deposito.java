@@ -20,14 +20,14 @@ public class Teste_Deposito {
 		dep.setCategoria_Estoque("Categoria teste");
 		dep.setNome("Deposito de frutas");
 		dep.setCodigo(32112333);
-		//g.Save(dep);
+		g.Save(dep);
 		
 		Produto p1 = new Produto();	//criando produto que vai no produto_deposito
 		p1.setNome("prod 1");
 		p1.setCodigo(5555);
 		
 		
-		//g.Save(p1);
+		g.Save(p1);
 		/*
 		 * Produto p2 = new Produto(); p2.setNome("prod 2"); p2.setCodigo(2222);
 		 * p2.setCategoria("produto 2");
@@ -42,9 +42,10 @@ public class Teste_Deposito {
 
 		// parametros: produto, deposito, quantidadeADDestoq
 		
-		//pdepDAO.ProcessarEntrada(p1, dep, 600);		
-		pdepDAO.ProcessarSaida(p1, dep, 4);
+		pdepDAO.ProcessarEntrada(p1, dep, 600);		
+		//pdepDAO.ProcessarSaida(p1, dep, 4);
 		
+		System.out.println("end");
 	}
 
 }

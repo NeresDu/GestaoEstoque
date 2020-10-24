@@ -18,6 +18,7 @@ import DAO.EntidadeBase;
 @Table(name = "Produtos_Deposito")
 public class Produto_Deposito implements EntidadeBase{
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@Column(name = "Custo")

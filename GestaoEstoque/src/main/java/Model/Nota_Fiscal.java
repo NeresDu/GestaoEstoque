@@ -20,7 +20,7 @@ import DAO.EntidadeBase;
 
 @Entity
 @Table(name = "Notas_Fiscais")
-public class Nota_Fiscal implements EntidadeBase{
+public class Nota_Fiscal implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
@@ -67,11 +67,7 @@ public class Nota_Fiscal implements EntidadeBase{
 		Utilizacao = utilizacao;
 	}
 
-	@Override
-	public Serializable getId() {
-		// TODO Auto-generated method stub
-		return Codigo;
-	}
+	
 	
 	
 }

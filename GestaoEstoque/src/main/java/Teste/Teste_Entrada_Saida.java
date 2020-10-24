@@ -2,19 +2,19 @@ package Teste;
 
 import java.util.Calendar;
 
-import DAO.Entrada_SaidaDAO;
-import Model.Entrada_Saida;
+import DAO.MovimentacaoDAO;
+import Model.Movimentacao;
 
 public class Teste_Entrada_Saida {
 
 	public static void main(String[] args) {
-		Entrada_Saida ES = new Entrada_Saida();
+		Movimentacao ES = new Movimentacao();
 		Calendar c = Calendar.getInstance();
 		ES.setCodigo(3);
 		ES.setData(c.getTime());
 		ES.setTipo_Movimentacao("ENTRADA");
 
-		Entrada_SaidaDAO ES_DAO = new Entrada_SaidaDAO();
+		MovimentacaoDAO ES_DAO = new MovimentacaoDAO();
 		ES_DAO.Save(ES);
 	
 		

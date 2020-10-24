@@ -16,7 +16,7 @@ import DAO.EntidadeBase;
 
 @Entity
 @Table(name = "Entrada_Saida")
-public class Entrada_Saida implements EntidadeBase {
+public class Movimentacao implements EntidadeBase {
 	@Id
 	@Column(name = "Codigo")
 	private int Codigo;
@@ -25,10 +25,10 @@ public class Entrada_Saida implements EntidadeBase {
 	@Column(name = "Tipo_Movimentacao")
 	private String Tipo_Movimentacao;
 	
-	public Entrada_Saida() {
+	public Movimentacao() {
 	}
 	
-	public Entrada_Saida(int codigo, Date data,String tipo_Movimentacao) {
+	public Movimentacao(int codigo, Date data,String tipo_Movimentacao) {
 		super();
 		Codigo = codigo;
 		Data = data;
