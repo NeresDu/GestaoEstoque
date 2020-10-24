@@ -19,13 +19,13 @@ public class Teste_Deposito {
 		Deposito dep = new Deposito();	//criando deposito
 		dep.setCategoria_Estoque("Categoria teste");
 		dep.setNome("Deposito de frutas");
-		dep.setCodigo(123);
+		dep.setCodigo(32112333);
 		//g.Save(dep);
 		
 		Produto p1 = new Produto();	//criando produto que vai no produto_deposito
 		p1.setNome("prod 1");
 		p1.setCodigo(5555);
-		p1.setCategoria("produto 1");
+		
 		
 		//g.Save(p1);
 		/*
@@ -35,17 +35,14 @@ public class Teste_Deposito {
 		List<Produto_Deposito> produtos_depositos = new ArrayList<Produto_Deposito>();
 		Produto_Deposito pdep = new Produto_Deposito();	// criando produto_dep, vincular o produto a 1 deposito
 		pdep.setProduto(p1);
-		pdep.setCodigo(12);
-		pdep.setCusto(109);
-		pdep.setEstoque(5);
-		pdep.setEstoque_Maximo(5);
-		pdep.setEstoque_Minimo(1);
+		pdep.setCodigo(88);
 		pdep.setDeposito(dep);
-
 		
-		 pdepDAO.EntradaEstoque(p1, dep, 8);		
+		//pdepDAO.setProduto_Deposito(15 ,10, 1, 100);
 
-		
+		// parametros: produto, deposito, quantidadeADDestoq
+		 pdepDAO.ProcessarEntrada(p1, dep, 600);		
+
 		
 	}
 

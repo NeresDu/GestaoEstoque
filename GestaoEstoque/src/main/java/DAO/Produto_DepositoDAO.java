@@ -46,19 +46,13 @@ public class Produto_DepositoDAO {
 		  trans.rollback(); 
 		  } 
 	  }
-		public void EntradaEstoque(Produto prod, Deposito dep, int quant) {
+		public void ProcessarEntrada(Produto prod, Deposito dep, int quant) {
 			Transaction trans = null;
 
 			try (Session Session = HibernateUtil.getSessionFactory().openSession()){
 
 				trans = Session.beginTransaction();
 				Produto_Deposito d = null;
-				/*
-				 * System.out.println(proddep.getIdInt()); d =
-				 * Session.get(Produto_Deposito.class, proddep.getIdInt());
-				 * //System.out.println(d.getDeposito().getIdInt()+"   "+proddep.getDeposito().
-				 * getIdInt()); trans.commit();
-				 */
 				List<Produto_Deposito> lista = null;
 				CriteriaBuilder builder = Session.getCriteriaBuilder();
 				CriteriaQuery<Produto_Deposito> criteryQuery = builder.createQuery(Produto_Deposito.class);
@@ -70,25 +64,30 @@ public class Produto_DepositoDAO {
 				Boolean estoqueAtualizado = false;
 				for (Produto_Deposito pd : lista) {
 					if(pd.getDeposito().getIdInt()==dep.getIdInt()) {
-						System.out.println("ja existe "+pd.getIdInt());
-						pd.setEstoque(pd.getEstoque()+quant);
-						Session.saveOrUpdate(pd);
-						trans.commit();
-						estoqueAtualizado = true;
-						break;
+						System.out.println("produto deposito encontrado ID:"+pd.getIdInt());
+						if((!(pd.getEstoque_Maximo() < VerificaEstoque(prod, dep)+quant))) {
+							pd.setEstoque(pd.getEstoque()+quant);
+							Session.saveOrUpdate(pd);
+							trans.commit();
+							estoqueAtualizado = true;
+							break;
+						}
+						else {
+							System.out.println("Voce tentou adicionar mais que o estoque maximo permitido para esse produto nesse deposito");
+						}
 					}
 				}
+				Session.clear();
 				if(!estoqueAtualizado) {
 					Produto_Deposito produtodeposito = new Produto_Deposito();
 					produtodeposito.setDeposito(dep);
 					produtodeposito.setProduto(prod);
 					produtodeposito.setEstoque(quant);
-					produtodeposito.setCodigo(13);
+					produtodeposito.setCodigo(20);
 					 
 					 Session.save(produtodeposito);
 						
 						trans.commit();
-					 
 					
 				}
 
@@ -98,11 +97,69 @@ public class Produto_DepositoDAO {
 				trans.rollback();
 			}
 		}
-		/*
-		 * public int VerificaEstoque(Produto prod) {
-		 * 
-		 * }
-		 */
+		
+		  public int VerificaEstoque(Produto prod, Deposito dep) {
+				Transaction trans = null;
+
+				try (Session Session = HibernateUtil.getSessionFactory().openSession()){
+
+					trans = Session.beginTransaction();
+					Produto_Deposito d = null;
+					List<Produto_Deposito> lista = null;
+					CriteriaBuilder builder = Session.getCriteriaBuilder();
+					CriteriaQuery<Produto_Deposito> criteryQuery = builder.createQuery(Produto_Deposito.class);
+					Root<Produto_Deposito> rootEntry = criteryQuery.from(Produto_Deposito.class);
+					CriteriaQuery<Produto_Deposito> all = criteryQuery.select(rootEntry);
+					TypedQuery<Produto_Deposito> allQuery = Session.createQuery(all);
+					lista = allQuery.getResultList();
+					
+					for (Produto_Deposito pd : lista) {
+						if(pd.getDeposito().getIdInt()==dep.getIdInt() && pd.getProduto().getIdInt()==prod.getIdInt()) {
+							System.out.println("produto encontrado estoque atual de "+pd.getEstoque()+" Estoque maximo: "+pd.getEstoque_Maximo()
+							+" Estoque maximo: "+pd.getEstoque_Minimo());
+							pd.setEstoque(pd.getEstoque());
+							return pd.getEstoque();
+						
+						}
+					}
+					trans.commit();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					
+					trans.rollback();
+				}
+				return 0;
+				
+		  
+		  }
+		  public void setProduto_Deposito(int idProd_Dep ,double custo, int estoqMin, int estoqMax) {
+			  Produto_Deposito pde =null;
+			  
+			  
+			  Transaction trans = null;
+
+				try (Session Session = HibernateUtil.getSessionFactory().openSession()){
+
+					trans = Session.beginTransaction();
+					 pde = Session.get(Produto_Deposito.class, idProd_Dep);
+					 
+					  pde.setCusto(custo);
+					  pde.setEstoque_Maximo(estoqMin);
+					  pde.setEstoque_Maximo(estoqMax);
+					Session.update(pde);
+					
+
+					trans.commit();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					trans.rollback();
+				}
+			  
+		  }
+		  
+		 
 		
 	 
 
