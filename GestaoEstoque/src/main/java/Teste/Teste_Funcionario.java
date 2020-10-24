@@ -21,12 +21,12 @@ public class Teste_Funcionario {
 		F.setNome("LUANA ALBUQUER");
 		F_DAO.Save(F);
 		
+//
+//		F = F_DAO.GetById(Funcionario.class, 123);
+//		F = new Funcionario();
 
-		F = F_DAO.GetById(Funcionario.class, 123);
-		F = new Funcionario();
-
-		F_DAO.Delete(Funcionario.class, 123);
-		F = F_DAO.GetById(Funcionario.class, 123);
+		//F_DAO.Delete(Funcionario.class, 123);
+		//F = F_DAO.GetById(Funcionario.class, 123);
 		System.out.println("END");
 
 	}

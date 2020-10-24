@@ -61,12 +61,6 @@ public class Produto_Nota_Fiscal implements Serializable {
 		this.codigo = codigo;
 	}
 
-
-	public void setNota_Fiscal(Nota_Fiscal nota_Fiscal) {
-		Nota_Fiscal = nota_Fiscal;
-	}
-
-
 	public Deposito getDeposito() {
 		return Deposito;
 	}
@@ -89,7 +83,7 @@ public class Produto_Nota_Fiscal implements Serializable {
 	}
 
 	public void setProduto(Produto Produto) {
-		Produto = Produto;
+		this.Produto = Produto;
 	}
 
 
@@ -103,12 +97,12 @@ public class Produto_Nota_Fiscal implements Serializable {
 	}
 
 
-	public Model.Nota_Fiscal getNota_Fiscal() {
+	public Nota_Fiscal getNota_Fiscal() {
 		return Nota_Fiscal;
 	}
-
-	public void setNota_Fiscal(int codigo_Nota_Fiscal) {
-		Nota_Fiscal = Nota_Fiscal;
+	
+	public void setNota_Fiscal(Nota_Fiscal nota_Fiscal) {
+		this.Nota_Fiscal = nota_Fiscal;
 	}
 
 

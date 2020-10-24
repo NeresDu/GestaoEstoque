@@ -17,7 +17,7 @@ import Model.Produto_Deposito;
 import Util.HibernateUtil;
 
 public class Produto_DepositoDAO {
-	
+
 	public void ProcessarEntrada(Produto prod, Deposito dep, int quant) {
 		Transaction trans = null;
 
@@ -110,10 +110,10 @@ public class Produto_DepositoDAO {
 
 			trans = Session.beginTransaction();
 			//pde = Session.get(Produto_Deposito.class, idProd_Dep);
-			
-//			pde.setCodigo(idProd_Dep);
-//			pde.setEstoque_Maximo(estoqMin);
-//			pde.setEstoque_Maximo(estoqMax);
+
+			//			pde.setCodigo(idProd_Dep);
+			//			pde.setEstoque_Maximo(estoqMin);
+			//			pde.setEstoque_Maximo(estoqMax);
 			pde = PD;
 			Session.update(pde);
 			trans.commit();
@@ -140,6 +140,7 @@ public class Produto_DepositoDAO {
 			TypedQuery<Produto_Deposito> allQuery = Session.createQuery(all);
 			lista = allQuery.getResultList();
 			Boolean estoqueAtualizado = false;
+			
 			for (Produto_Deposito pd : lista) {
 				if(pd.getDeposito().getIdInt()==dep.getIdInt()) {
 					System.out.println("produto deposito encontrado ID:"+pd.getIdInt());
@@ -157,15 +158,7 @@ public class Produto_DepositoDAO {
 			}
 			Session.clear();
 			if(estoqueAtualizado==false) {
-				Produto_Deposito produtodeposito = new Produto_Deposito();
-				produtodeposito.setDeposito(dep);
-				produtodeposito.setProduto(prod);
-				produtodeposito.setEstoque(quant);
-				produtodeposito.setCodigo(20);
-
-				Session.save(produtodeposito);
-
-				trans.commit();
+				throw new IllegalArgumentException("Erro: Produto não consta no deposito");
 
 			}
 
@@ -174,6 +167,36 @@ public class Produto_DepositoDAO {
 			e.printStackTrace();
 			trans.rollback();
 		}
+	}
+
+	public Produto_Deposito BuscaProduto_Deposito(Produto Produto, Deposito Deposito) {
+		Transaction trans = null;
+
+		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
+
+			trans = Session.beginTransaction();
+			Produto_Deposito d = null;
+			List<Produto_Deposito> lista = null;
+			CriteriaBuilder builder = Session.getCriteriaBuilder();
+			CriteriaQuery<Produto_Deposito> criteryQuery = builder.createQuery(Produto_Deposito.class);
+			Root<Produto_Deposito> rootEntry = criteryQuery.from(Produto_Deposito.class);
+			CriteriaQuery<Produto_Deposito> all = criteryQuery.select(rootEntry);
+
+			TypedQuery<Produto_Deposito> allQuery = Session.createQuery(all);
+			lista = allQuery.getResultList();
+
+			for (Produto_Deposito pd : lista) {
+				if(pd.getDeposito().getIdInt()==Deposito.getIdInt()) {
+					return pd;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+		}
+		return null;
+
 	}
 
 

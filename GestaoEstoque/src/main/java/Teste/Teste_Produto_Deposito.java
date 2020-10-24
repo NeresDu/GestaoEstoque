@@ -10,40 +10,27 @@ import Model.Produto_Deposito;
 public class Teste_Produto_Deposito {
 
 	public static void main(String[] args) {
-		//criar deposito
-		Deposito d = new Deposito();
-		d.setCategoria_Estoque("RISCO");
-		d.setNome("Visconde");
-		d.setCodigo(3);
-//		DepositoDAO DDAO = new DepositoDAO();
-//		DDAO.Save(d);
-		
-		
+		DepositoDAO DDAO = new DepositoDAO();		
 		ProdutoDAO PDAO= new ProdutoDAO();
-		
-		
-		// teste produto_estoque
 		Produto_DepositoDAO PDDAO = new Produto_DepositoDAO();
 		Produto_Deposito PD = new Produto_Deposito();
-		PD.setCodigo(1);
-		PD.setCusto(27.30);
-		PD.setDeposito(d);
-		PD.setEstoque(50);
-		PD.setEstoque_Maximo(900);
-		PD.setEstoque_Minimo(9);
-		Produto P = new Produto();
-		P.setCodigo(3);
-		PD.setProduto(P);
+
+		PD = new Produto_Deposito();
+		PD.setDeposito(DDAO.GetById(Deposito.class, 3));
+		PD.setProduto(PDAO.GetById(Produto.class, 5));
 		
+		//processa entrada de mercadorias
+		PDDAO.ProcessarEntrada(PD.getProduto(),	PD.getDeposito(), 25);
+		PD = PDDAO.BuscaProduto_Deposito(PDAO.GetById(Produto.class, 3), DDAO.GetById(Deposito.class, 3) );
+		PD.setEstoque_Maximo(360);
+		PD.setEstoque_Minimo(2);
+		PD.setCusto(5.35);
 		PDDAO.Atualiza_Minimo_Maximo(PD);
+
 		
-//		PDDAO.ProcessarEntrada(PDAO.GetById(Produto.class, 1),
-//				DDAO.GetById(Deposito.class, 0), 
-//				25);
+		//processa saída de mercadorias
+		PDDAO.ProcessarSaida(PDAO.GetById(Produto.class, 4), DDAO.GetById(Deposito.class, 3), 2);
 		
-		
-//		System.out.println(PDDAO.VerificaEstoque(PDAO.GetById(Produto.class, 1), DDAO.GetById(Deposito.class, 0)));
-//		
 		
 		System.out.println("END");
 	}

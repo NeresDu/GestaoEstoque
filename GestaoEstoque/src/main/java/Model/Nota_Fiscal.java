@@ -21,7 +21,6 @@ import DAO.EntidadeBase;
 @Entity
 @Table(name = "Notas_Fiscais")
 public class Nota_Fiscal implements Serializable{
-	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
 	private int Codigo;
@@ -32,6 +31,9 @@ public class Nota_Fiscal implements Serializable{
 	private String Utilizacao;
 	@Column(name = "Data")
 	private Date Data;
+	@Id
+	@Column (name = "Numeracao")
+	private String Numeracao;
 	
 	public Nota_Fiscal() {
 		
@@ -43,6 +45,24 @@ public class Nota_Fiscal implements Serializable{
 		Utilizacao = utilizacao;
 	}
 	
+	
+	
+	public Fornecedor_Cliente getFornecedor_Cliente() {
+		return Fornecedor_Cliente;
+	}
+
+	public void setFornecedor_Cliente(Fornecedor_Cliente fornecedor_Cliente) {
+		Fornecedor_Cliente = fornecedor_Cliente;
+	}
+
+	public String getNumeracao() {
+		return Numeracao;
+	}
+
+	public void setNumeracao(String numeracao) {
+		Numeracao = numeracao;
+	}
+
 	public Date getData() {
 		return Data;
 	}
