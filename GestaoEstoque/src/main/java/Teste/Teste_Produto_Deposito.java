@@ -9,7 +9,7 @@ import Model.Produto;
 public class Teste_Produto_Deposito {
 
 	public static void main(String[] args) {
-		
+		//criar deposito
 		Deposito d = new Deposito();
 		d.setCategoria_Estoque("RISCO");
 		d.setNome("Visconde");
@@ -20,7 +20,7 @@ public class Teste_Produto_Deposito {
 		
 		ProdutoDAO PDAO= new ProdutoDAO();
 		
-		
+		// teste produto_estoque
 		Produto_DepositoDAO PDDAO = new Produto_DepositoDAO();
 		PDDAO.Atualiza_Minimo_Maximo(20, 10, 1000000);
 		
