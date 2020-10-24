@@ -34,7 +34,7 @@ public class Teste_Nota_Fiscal {
 		Produto comum = new Produto();
 		comum.setCodigo(2);
 		PNF.setProduto(comum);
-		PNF.setDeposito(DDAO.GetById(Deposito.class, 5));
+		PNF.setDeposito(DDAO.GetById(Deposito.class, 0));
 		PNF.setCusto(30.02);
 		PNF.setNota_Fiscal(5);
 		PNF.setQuantidade(97);

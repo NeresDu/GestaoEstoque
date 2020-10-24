@@ -17,16 +17,21 @@ import DAO.EntidadeBase;
 @Table(name = "Produtos_Nota_Fiscal")
 public class Produto_Nota_Fiscal implements Serializable {
 	//deposito no qual ocorrerá a movimentação
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Codigo")
+	private int codigo;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Deposito Deposito;
 	@Column(name = "Custo")
 	private double Custo;
 	@Column(name = "Quantidade")
 	private int Quantidade;
-	@Id
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Nota_Fiscal Nota_Fiscal;
-	@Id
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Produto Produto;
 	
@@ -43,6 +48,22 @@ public class Produto_Nota_Fiscal implements Serializable {
 		Produto = Produto;
 		Quantidade = quantidade;
 		Nota_Fiscal = Nota_Fiscal;
+	}
+
+	
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public void setNota_Fiscal(Nota_Fiscal nota_Fiscal) {
+		Nota_Fiscal = nota_Fiscal;
 	}
 
 

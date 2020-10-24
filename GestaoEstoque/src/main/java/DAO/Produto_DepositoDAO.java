@@ -100,8 +100,8 @@ public class Produto_DepositoDAO {
 
 
 	}
-	public void Atualiza_Minimo_Maximo(int idProd_Dep ,int estoqMin, int estoqMax) {
-		Produto_Deposito pde =null;
+	public void Atualiza_Minimo_Maximo(Produto_Deposito PD) {
+		Produto_Deposito pde = new Produto_Deposito();
 
 
 		Transaction trans = null;
@@ -109,13 +109,13 @@ public class Produto_DepositoDAO {
 		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
 
 			trans = Session.beginTransaction();
-			pde = Session.get(Produto_Deposito.class, idProd_Dep);
-
-			pde.setEstoque_Maximo(estoqMin);
-			pde.setEstoque_Maximo(estoqMax);
+			//pde = Session.get(Produto_Deposito.class, idProd_Dep);
+			
+//			pde.setCodigo(idProd_Dep);
+//			pde.setEstoque_Maximo(estoqMin);
+//			pde.setEstoque_Maximo(estoqMax);
+			pde = PD;
 			Session.update(pde);
-
-
 			trans.commit();
 
 		} catch (Exception e) {
