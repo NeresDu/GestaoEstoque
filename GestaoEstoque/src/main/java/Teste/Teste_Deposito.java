@@ -35,14 +35,15 @@ public class Teste_Deposito {
 		List<Produto_Deposito> produtos_depositos = new ArrayList<Produto_Deposito>();
 		Produto_Deposito pdep = new Produto_Deposito();	// criando produto_dep, vincular o produto a 1 deposito
 		pdep.setProduto(p1);
-		pdep.setCodigo(88);
+		//pdep.setCodigo(88);
 		pdep.setDeposito(dep);
 		
 		//pdepDAO.setProduto_Deposito(15 ,10, 1, 100);
 
 		// parametros: produto, deposito, quantidadeADDestoq
-		 pdepDAO.ProcessarEntrada(p1, dep, 600);		
-
+		
+		//pdepDAO.ProcessarEntrada(p1, dep, 600);		
+		pdepDAO.ProcessarSaida(p1, dep, 4);
 		
 	}
 
