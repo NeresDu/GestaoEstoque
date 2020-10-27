@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,15 +17,18 @@ import javax.persistence.Table;
 import DAO.EntidadeBase;
 
 @Entity
-@Table(name = "Entrada_Saida")
+@Table(name = "Movimentacao")
 public class Movimentacao implements EntidadeBase {
-	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@Column(name = "Data")
 	private Date Data;
 	@Column(name = "Tipo_Movimentacao")
 	private String Tipo_Movimentacao;
+	@Id
+	@Column (name = "Numeracao")
+	private String Numeracao;
 	
 	public Movimentacao() {
 	}
@@ -33,6 +38,16 @@ public class Movimentacao implements EntidadeBase {
 		Codigo = codigo;
 		Data = data;
 		Tipo_Movimentacao = tipo_Movimentacao;
+	}
+	
+	
+
+	public String getNumeracao() {
+		return Numeracao;
+	}
+
+	public void setNumeracao(String numeracao) {
+		Numeracao = numeracao;
 	}
 
 	public int getCodigo() {

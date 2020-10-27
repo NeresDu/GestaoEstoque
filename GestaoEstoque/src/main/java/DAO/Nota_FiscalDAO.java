@@ -32,12 +32,21 @@ public class Nota_FiscalDAO {
 			}
 			
 			try (Session Session = HibernateUtil.getSessionFactory().openSession()){
-				Session.clear();
-
-				System.out.println("entrou no subtrair estoque");
-				//Session.save(t);
-
+				trans = Session.beginTransaction();
+				Session.save(NF);
 				trans.commit();
+				
+				
+				for (Produto_Nota_Fiscal PNF : Produtos) {
+					Session.clear();
+					trans = Session.beginTransaction();
+					Session.save(PNF);
+					trans.commit();
+					
+					PDDAO = new Produto_DepositoDAO();
+					PDDAO.ProcessarSaida(PNF.getProduto(), PNF.getDeposito(), PNF.getQuantidade());
+					
+				}
 
 			} catch (Exception e) { e.printStackTrace(); trans.rollback(); }
 

@@ -3,6 +3,8 @@ package Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -11,9 +13,11 @@ import javax.persistence.Table;
 @Table(name = "Produto_Movimentacao")
 public class Produto_Movimentacao {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "Codigo")
+	private int codigo;
 	@OneToOne(fetch = FetchType.LAZY)
 	private Movimentacao Movimentacao;
-	@Id
 	@OneToOne(fetch = FetchType.LAZY)
 	private Produto Produto;
 	@Column(name = "Custo")
@@ -35,6 +39,16 @@ public class Produto_Movimentacao {
 		Custo = custo;
 		Quantidade = quantidade;
 		Deposito = deposito;
+	}
+	
+	
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public Movimentacao getMovimentacao() {

@@ -58,10 +58,10 @@ public class HibernateUtil {
 				configuration.addAnnotatedClass(Funcionario.class);
 				configuration.addAnnotatedClass(Nota_Fiscal.class);				
 				configuration.addAnnotatedClass(Produto.class);
-				//configuration.addAnnotatedClass(Produto_Movimentacao.class);
+				configuration.addAnnotatedClass(Produto_Movimentacao.class);
 				configuration.addAnnotatedClass(Produto_Deposito.class);
 				configuration.addAnnotatedClass(Produto_Nota_Fiscal.class);
-				//configuration.addAnnotatedClass(Movimentacao.class);
+				configuration.addAnnotatedClass(Movimentacao.class);
 				configuration.addAnnotatedClass(Risco.class);
 				configuration.addAnnotatedClass(Perecivel.class);
 				

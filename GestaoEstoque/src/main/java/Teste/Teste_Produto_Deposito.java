@@ -21,7 +21,7 @@ public class Teste_Produto_Deposito {
 		
 		//processa entrada de mercadorias
 		PDDAO.ProcessarEntrada(PD.getProduto(),	PD.getDeposito(), 25);
-		PD = PDDAO.BuscaProduto_Deposito(PDAO.GetById(Produto.class, 3), DDAO.GetById(Deposito.class, 3) );
+		PD = PDDAO.BuscaProduto_Deposito(PDAO.GetById(Produto.class, 2), DDAO.GetById(Deposito.class, 32112333) );
 		PD.setEstoque_Maximo(360);
 		PD.setEstoque_Minimo(2);
 		PD.setCusto(5.35);
