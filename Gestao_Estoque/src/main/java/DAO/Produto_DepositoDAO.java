@@ -158,7 +158,7 @@ public class Produto_DepositoDAO {
 			}
 			Session.clear();
 			if(estoqueAtualizado==false) {
-				throw new IllegalArgumentException("Erro: Produto n�o consta no deposito");
+				throw new IllegalArgumentException("Erro: Produto n�o consta no deposito");
 
 			}
 
@@ -197,6 +197,26 @@ public class Produto_DepositoDAO {
 		}
 		return null;
 
+	}
+	public Produto_Deposito GetProduto_DepositoById(int Codigo) {
+		//Iniciar nova Transação banco
+		Transaction trans = null;
+
+		Produto_Deposito d = null;
+
+		//CONTROLE DE SESSÃO COM UMA SESSÃO QUE VIRÁ DO SERVIDOR
+		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
+			trans = Session.beginTransaction();
+
+			d = Session.get(Produto_Deposito.class, Codigo);
+
+
+			trans.commit();
+
+		} catch (Exception e) {
+			trans.rollback();
+		}
+		return d;
 	}
 
 

@@ -15,8 +15,8 @@ import DAO.EntidadeBase;
 
 @Entity
 @Table(name = "Produtos_Nota_Fiscal")
-public class Produto_Nota_Fiscal implements Serializable {
-	//deposito no qual ocorrerá a movimentação
+public class Produto_Nota_Fiscal implements EntidadeBase {
+	//deposito no qual ocorrerï¿½ a movimentaï¿½ï¿½o
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
@@ -103,6 +103,12 @@ public class Produto_Nota_Fiscal implements Serializable {
 	
 	public void setNota_Fiscal(Nota_Fiscal nota_Fiscal) {
 		this.Nota_Fiscal = nota_Fiscal;
+	}
+
+
+	@Override
+	public Serializable getId() {
+		return codigo;
 	}
 
 

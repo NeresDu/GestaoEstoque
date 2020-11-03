@@ -11,6 +11,7 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import Model.Deposito;
 import Model.Funcionario;
 import Model.Movimentacao;
 import Model.Movimentacao;
@@ -122,6 +123,26 @@ public class MovimentacaoDAO extends GenericoDAO<Movimentacao>{
 		}
 		return PM;	
 		
+	}
+	public Movimentacao GetMovimentacaoById(int Codigo) {
+		//Iniciar nova Transação banco
+		Transaction trans = null;
+
+		Movimentacao d = null;
+
+		//CONTROLE DE SESSÃO COM UMA SESSÃO QUE VIRÁ DO SERVIDOR
+		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
+			trans = Session.beginTransaction();
+
+			d = Session.get(Movimentacao.class, Codigo);
+
+
+			trans.commit();
+
+		} catch (Exception e) {
+			trans.rollback();
+		}
+		return d;
 	}
 
 }

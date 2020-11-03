@@ -1,5 +1,7 @@
 package Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import DAO.EntidadeBase;
+
 @Entity
 @Table(name = "Produto_Movimentacao")
-public class Produto_Movimentacao {
+public class Produto_Movimentacao implements EntidadeBase{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Codigo")
@@ -89,6 +93,11 @@ public class Produto_Movimentacao {
 
 	public void setDeposito(Deposito deposito) {
 		Deposito = deposito;
+	}
+
+	@Override
+	public Serializable getId() {
+		return codigo;
 	}
 	
 	

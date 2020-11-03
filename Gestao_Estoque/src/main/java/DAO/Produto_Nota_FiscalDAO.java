@@ -3,19 +3,21 @@ package DAO;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import Model.Filial;
-import Model.Filial;
+import Model.Produto_Nota_Fiscal;
+import Model.Movimentacao;
+import Model.Produto_Nota_Fiscal;
 import Util.HibernateUtil;
 
-public class FilialDAO extends GenericoDAO<Filial>{
-	public Filial DeleteFilial(int id) {
+public class Produto_Nota_FiscalDAO extends GenericoDAO<Produto_Nota_Fiscal>{
+
+	public Produto_Nota_Fiscal DeleteProduto_Nota_Fiscal(int id) {
 		Transaction trans = null;
-		Filial d = null;
+		Produto_Nota_Fiscal d = null;
 
 		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
 			trans = Session.beginTransaction();
 
-			d = Session.get(Filial.class, id);
+			d = Session.get(Produto_Nota_Fiscal.class, id);
 			Session.remove(d);
 
 			trans.commit();
@@ -25,17 +27,17 @@ public class FilialDAO extends GenericoDAO<Filial>{
 		}
 		return d;
 	}
-	public Filial GetFilialById(int Codigo) {
+	public Produto_Nota_Fiscal GetProduto_Nota_FiscalById(int Codigo) {
 		//Iniciar nova Transação banco
 		Transaction trans = null;
 
-		Filial d = null;
+		Produto_Nota_Fiscal d = null;
 
 		//CONTROLE DE SESSÃO COM UMA SESSÃO QUE VIRÁ DO SERVIDOR
 		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
 			trans = Session.beginTransaction();
 
-			d = Session.get(Filial.class, Codigo);
+			d = Session.get(Produto_Nota_Fiscal.class, Codigo);
 
 
 			trans.commit();
@@ -45,5 +47,4 @@ public class FilialDAO extends GenericoDAO<Filial>{
 		}
 		return d;
 	}
-
 }
