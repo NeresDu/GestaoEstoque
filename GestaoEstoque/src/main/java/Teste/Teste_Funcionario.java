@@ -1,33 +1,32 @@
 package Teste;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import DAO.FuncionarioDAO;
 import Model.Funcionario;
 
 public class Teste_Funcionario {
+
 	public static void main(String[] args) {
-		Funcionario F = new Funcionario();
-		F.setCargo("COMPRADOR");
-		F.setCpf("0643598181");
-		F.setNome("JOAO CARLOS MOREIRA");
-
-		FuncionarioDAO F_DAO = new FuncionarioDAO();
-		F_DAO.Save(F);
+		Funcionario Funcionario = new Funcionario();
+		FuncionarioDAO FuncionarioDao = new FuncionarioDAO();
 		
+		Funcionario.setNome("Geremias Silveira");
+		Funcionario.setCargo("COMPRADOR");
+		Funcionario.setCpf("07207435913");
 		
-		F = new Funcionario();
-		F.setCodigo(123);
-		F.setCargo("COMPRADOR");
-		F.setCpf("321654321");
-		F.setNome("LUANA ALBUQUER");
-		F_DAO.Save(F);
+		FuncionarioDao.Save(Funcionario);
 		
-//
-//		F = F_DAO.GetById(Funcionario.class, 123);
-//		F = new Funcionario();
-
-		//F_DAO.Delete(Funcionario.class, 123);
-		//F = F_DAO.GetById(Funcionario.class, 123);
+		//Funcionario = FuncionarioDao.GetById(Funcionario.class, 1);
+		
+		//FuncionarioDao.Delete(Funcionario.class, 1);
+		
+		List<Funcionario> Funcionarios = new ArrayList<Funcionario>();
+		Funcionarios = FuncionarioDao.GetAll(Funcionario.class);
+		
 		System.out.println("END");
 
 	}
+
 }

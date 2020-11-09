@@ -21,7 +21,7 @@ import DAO.EntidadeBase;
 @Entity
 @Table(name = "Notas_Fiscais")
 public class Nota_Fiscal implements Serializable{
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@OneToOne(fetch = FetchType.LAZY)

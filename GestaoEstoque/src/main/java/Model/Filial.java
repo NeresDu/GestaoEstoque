@@ -19,7 +19,7 @@ import DAO.EntidadeBase;
 @Table(name = "Filiais")
 public class Filial implements EntidadeBase{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

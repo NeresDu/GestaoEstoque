@@ -19,6 +19,7 @@ import DAO.EntidadeBase;
 @Table(name = "Depositos")
 public class Deposito implements EntidadeBase{	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	

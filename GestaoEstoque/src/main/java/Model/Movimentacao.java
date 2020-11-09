@@ -19,7 +19,7 @@ import DAO.EntidadeBase;
 @Entity
 @Table(name = "Movimentacao")
 public class Movimentacao implements EntidadeBase {
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@Column(name = "Data")

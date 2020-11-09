@@ -17,6 +17,7 @@ import DAO.EntidadeBase;
 public class Funcionario implements EntidadeBase{
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	

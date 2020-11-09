@@ -18,7 +18,7 @@ import DAO.EntidadeBase;
 public class Produto_Nota_Fiscal implements Serializable {
 	//deposito no qual ocorrerá a movimentação
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int codigo;
 	

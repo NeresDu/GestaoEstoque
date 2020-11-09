@@ -19,7 +19,7 @@ import DAO.EntidadeBase;
 @Table(name = "Fornecedores_Clientes")
 public class Fornecedor_Cliente implements EntidadeBase{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@Column(name = "Cnpj")

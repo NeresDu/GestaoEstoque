@@ -26,7 +26,7 @@ import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 @Table(name = "Produtos")
 public class Produto implements EntidadeBase{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int Codigo;
 	@Column(name = "Nome")

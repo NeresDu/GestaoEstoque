@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "Produto_Movimentacao")
 public class Produto_Movimentacao {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Codigo")
 	private int codigo;
 	@OneToOne(fetch = FetchType.LAZY)
