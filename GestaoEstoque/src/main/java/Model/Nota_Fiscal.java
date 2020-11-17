@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.management.loading.PrivateClassLoader;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,19 +22,18 @@ import DAO.EntidadeBase;
 @Entity
 @Table(name = "Notas_Fiscais")
 public class Nota_Fiscal implements Serializable{
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Codigo")
-	private int Codigo;
 	@OneToOne(fetch = FetchType.LAZY)
 	private Fornecedor_Cliente Fornecedor_Cliente;
 	//venda, compra, devolução
 	@Column(name = "Utilizacao")
 	private String Utilizacao;
 	@Column(name = "Data")
-	private Date Data;
+	private Calendar Data;
 	@Id
 	@Column (name = "Numeracao")
 	private String Numeracao;
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Produto_Nota_Fiscal> Produtos;
 	
 	public Nota_Fiscal() {
 		
@@ -41,12 +41,19 @@ public class Nota_Fiscal implements Serializable{
 
 	public Nota_Fiscal(int codigo, Model.Fornecedor_Cliente fornecedor, String utilizacao) {
 		super();
-		Codigo = codigo;
 		Utilizacao = utilizacao;
 	}
 	
+	public List<Produto_Nota_Fiscal> getProdutos() {
+		return Produtos;
+	}
+
+	public void setProdutos(List<Produto_Nota_Fiscal> produtos) {
+		Produtos = produtos;
+	}
+
 	
-	
+
 	public Fornecedor_Cliente getFornecedor_Cliente() {
 		return Fornecedor_Cliente;
 	}
@@ -63,20 +70,12 @@ public class Nota_Fiscal implements Serializable{
 		Numeracao = numeracao;
 	}
 
-	public Date getData() {
+	public Calendar getData() {
 		return Data;
 	}
 
-	public void setData(Date date) {
-		Data = date;
-	}
-
-	public int getCodigo() {
-		return Codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		Codigo = codigo;
+	public void setData(Calendar c) {
+		Data = c;
 	}
 
 	public String getUtilizacao() {

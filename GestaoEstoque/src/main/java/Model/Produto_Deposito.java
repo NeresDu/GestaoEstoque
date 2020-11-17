@@ -35,6 +35,7 @@ public class Produto_Deposito implements EntidadeBase{
 	//@JoinColumn(name = "idDeposito")
 	@OneToOne(fetch = FetchType.LAZY)
 	private Deposito Deposito;
+	private int qtd;
 	
 	public Produto_Deposito(int codigo, double custo, int estoque, int estoque_Maximo, int estoque_Minimo,
 			Model.Produto produto, Model.Deposito deposito) {
@@ -62,7 +63,16 @@ public class Produto_Deposito implements EntidadeBase{
 	public void setCodigo(int codigo) {
 		Codigo = codigo;
 	}
+	
+	
 
+	public int getQtd() {
+		return qtd;
+	}
+
+	public void setQtd(int qtd) {
+		this.qtd = qtd;
+	}
 
 	public double getCusto() {
 		return Custo;

@@ -28,12 +28,10 @@ public class Produto_Nota_Fiscal implements Serializable {
 	private double Custo;
 	@Column(name = "Quantidade")
 	private int Quantidade;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	private Nota_Fiscal Nota_Fiscal;
-	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Produto Produto;
+	@Column(name = "Numeracao_NF")
+	private String Numeracao_NF;
 	
 	public Produto_Nota_Fiscal() {
 		
@@ -97,13 +95,17 @@ public class Produto_Nota_Fiscal implements Serializable {
 	}
 
 
-	public Nota_Fiscal getNota_Fiscal() {
-		return Nota_Fiscal;
+	public String getNumeracao_NF() {
+		return Numeracao_NF;
 	}
-	
-	public void setNota_Fiscal(Nota_Fiscal nota_Fiscal) {
-		this.Nota_Fiscal = nota_Fiscal;
+
+
+	public void setNumeracao_NF(String numeracao_NF) {
+		Numeracao_NF = numeracao_NF;
 	}
+
+
+
 
 
 

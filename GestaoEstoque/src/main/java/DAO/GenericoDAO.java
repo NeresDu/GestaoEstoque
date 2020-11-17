@@ -60,6 +60,7 @@ public class GenericoDAO<T extends EntidadeBase> {
 
 		//CONTROLE DE SESSÃO COM UMA SESSÃO QUE VIRÁ DO SERVIDOR
 		try (Session Session = HibernateUtil.getSessionFactory().openSession()){
+			Session.clear();
 			trans = Session.beginTransaction();
 
 			t = Session.get(c, Codigo);

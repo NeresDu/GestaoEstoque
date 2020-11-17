@@ -18,10 +18,7 @@ import DAO.EntidadeBase;
 
 @Entity
 @Table(name = "Movimentacao")
-public class Movimentacao implements EntidadeBase {
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Codigo")
-	private int Codigo;
+public class Movimentacao implements Serializable {
 	@Column(name = "Data")
 	private Date Data;
 	@Column(name = "Tipo_Movimentacao")
@@ -29,13 +26,14 @@ public class Movimentacao implements EntidadeBase {
 	@Id
 	@Column (name = "Numeracao")
 	private String Numeracao;
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Produto_Movimentacao> Produtos;
 	
 	public Movimentacao() {
 	}
 	
 	public Movimentacao(int codigo, Date data,String tipo_Movimentacao) {
 		super();
-		Codigo = codigo;
 		Data = data;
 		Tipo_Movimentacao = tipo_Movimentacao;
 	}
@@ -48,14 +46,6 @@ public class Movimentacao implements EntidadeBase {
 
 	public void setNumeracao(String numeracao) {
 		Numeracao = numeracao;
-	}
-
-	public int getCodigo() {
-		return Codigo;
-	}
-
-	public void setCodigo(int codigo) {
-		Codigo = codigo;
 	}
 
 	public Date getData() {
@@ -74,10 +64,14 @@ public class Movimentacao implements EntidadeBase {
 		Tipo_Movimentacao = tipo_Movimentacao;
 	}
 
-	@Override
-	public Serializable getId() {
-		// TODO Auto-generated method stub
-		return this.Codigo;
+	public List<Produto_Movimentacao> getProdutos() {
+		return Produtos;
 	}
+
+	public void setProdutos(List<Produto_Movimentacao> produtos) {
+		Produtos = produtos;
+	}
+
+	
 	
 }

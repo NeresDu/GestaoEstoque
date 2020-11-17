@@ -17,15 +17,15 @@ public class Produto_Movimentacao {
 	@Column(name = "Codigo")
 	private int codigo;
 	@OneToOne(fetch = FetchType.LAZY)
-	private Movimentacao Movimentacao;
+	private Deposito Deposito;
 	@OneToOne(fetch = FetchType.LAZY)
 	private Produto Produto;
 	@Column(name = "Custo")
 	private double Custo;
 	@Column(name = "Quantidade")
 	private int Quantidade;
-	@OneToOne(fetch = FetchType.LAZY)
-	private Deposito Deposito;
+	@Column(name = "Numeracao_Movimentacao")
+	private String Numeracao_Movimentacao;
 	
 	public Produto_Movimentacao() {
 		
@@ -38,7 +38,6 @@ public class Produto_Movimentacao {
 		Produto = produto;
 		Custo = custo;
 		Quantidade = quantidade;
-		Deposito = deposito;
 	}
 	
 	
@@ -51,12 +50,14 @@ public class Produto_Movimentacao {
 		this.codigo = codigo;
 	}
 
-	public Movimentacao getMovimentacao() {
-		return Movimentacao;
+	
+
+	public Deposito getDeposito() {
+		return Deposito;
 	}
 
-	public void setMovimentacao(Movimentacao Movimentacao) {
-		Movimentacao = Movimentacao;
+	public void setDeposito(Deposito deposito) {
+		Deposito = deposito;
 	}
 
 	public Produto getProduto() {
@@ -83,13 +84,15 @@ public class Produto_Movimentacao {
 		Quantidade = quantidade;
 	}
 
-	public Deposito getDeposito() {
-		return Deposito;
+	public String getNumeracao_Movimentacao() {
+		return Numeracao_Movimentacao;
 	}
 
-	public void setDeposito(Deposito deposito) {
-		Deposito = deposito;
+	public void setNumeracao_Movimentacao(String numeracao_Movimentacao) {
+		Numeracao_Movimentacao = numeracao_Movimentacao;
 	}
+
+	
 	
 	
 	
